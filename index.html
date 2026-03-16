@@ -8,6 +8,102 @@
 
 <style>
 
+.social-btn i{
+margin-right:6px;
+font-size:14px;
+}
+
+/* ========================= */
+/* ANIMASI MODERN TAMBAHAN   */
+/* ========================= */
+
+/* NAVBAR BLUR SAAT SCROLL */
+header{
+backdrop-filter:blur(10px);
+transition:all .4s ease;
+}
+
+/* HERO PARALLAX */
+.hero{
+background-attachment:fixed;
+}
+
+/* HERO LOGO ANIMATION */
+.hero-logo{
+animation:logoPulse 4s infinite ease-in-out;
+}
+
+@keyframes logoPulse{
+0%{transform:scale(1)}
+50%{transform:scale(1.05)}
+100%{transform:scale(1)}
+}
+
+/* CARD HOVER EFFECT */
+
+.card,
+.team-card,
+.process div,
+.dosen-card{
+transition:all .35s ease;
+}
+
+.card:hover,
+.team-card:hover,
+.process div:hover,
+.dosen-card:hover{
+transform:translateY(-8px);
+box-shadow:0 18px 40px rgba(0,0,0,0.15);
+}
+
+/* BUTTON HOVER GLOW */
+
+.ppko-btn,
+.team-card a{
+transition:all .3s ease;
+}
+
+.ppko-btn:hover,
+.team-card a:hover{
+transform:translateY(-2px);
+box-shadow:0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* NAV LINK HOVER */
+
+nav a{
+position:relative;
+}
+
+nav a::after{
+content:'';
+position:absolute;
+bottom:-5px;
+left:0;
+width:0%;
+height:2px;
+background:#111;
+transition:.3s;
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+/* SCROLL ANIMATION */
+
+.reveal{
+opacity:0;
+transform:translateY(80px);
+transition:all 2s cubic-bezier(.22,.61,.36,1);
+will-change:opacity, transform;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
 *{
 margin:0;
 padding:0;
@@ -36,16 +132,9 @@ justify-content:space-between;
 align-items:center;
 padding:16px 8%;
 z-index:1000;
-transition:.3s;
-}
-
-header.scrolled{
-background:rgba(255,255,255,.9);
-backdrop-filter:blur(12px);
+background:white;
 box-shadow:0 4px 18px rgba(0,0,0,0.08);
 }
-
-/* LOGO */
 
 .logo-wrap{
 display:flex;
@@ -65,8 +154,6 @@ border-radius:50%;
 object-fit:cover;
 }
 
-/* NAV */
-
 nav{
 display:flex;
 gap:25px;
@@ -76,38 +163,6 @@ nav a{
 text-decoration:none;
 color:#222;
 font-weight:600;
-}
-
-/* MENU BUTTON */
-
-.menu-btn{
-width:40px;
-height:40px;
-display:none;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-cursor:pointer;
-gap:5px;
-}
-
-.menu-btn span{
-width:22px;
-height:2px;
-background:#222;
-transition:.3s;
-}
-
-.menu-btn.active span:nth-child(1){
-transform:rotate(45deg) translate(5px,5px);
-}
-
-.menu-btn.active span:nth-child(2){
-opacity:0;
-}
-
-.menu-btn.active span:nth-child(3){
-transform:rotate(-45deg) translate(5px,-5px);
 }
 
 /* HERO */
@@ -120,11 +175,9 @@ justify-content:center;
 text-align:center;
 color:white;
 padding:20px;
-
 background:
 linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
 url("https://miro.medium.com/v2/resize:fit:1358/1*uYLGfj4GONXf4rVByrULog.jpeg");
-
 background-size:cover;
 background-position:center;
 }
@@ -133,10 +186,8 @@ background-position:center;
 width:120px;
 height:120px;
 border-radius:50%;
-object-fit:cover;
 margin-bottom:18px;
 border:4px solid white;
-box-shadow:0 8px 20px rgba(0,0,0,0.4);
 }
 
 .hero h1{
@@ -149,56 +200,157 @@ max-width:650px;
 line-height:1.6;
 }
 
+.jargon{
+margin-top:18px;
+font-size:20px;
+font-weight:600;
+}
+
 /* SECTION */
 
 section{
-padding:85px 10%;
-}
-
-/* ANIMASI */
-
-.reveal{
-opacity:0;
-transform:translateY(60px);
-transition:all 1s ease;
-}
-
-.reveal.active{
-opacity:1;
-transform:translateY(0);
+padding:90px 10%;
 }
 
 .title{
 text-align:center;
 font-size:32px;
-margin-bottom:25px;
+margin-bottom:40px;
 }
 
 /* CARD */
 
 .card{
-background:rgba(255,255,255,.7);
-backdrop-filter:blur(14px);
+background:rgba(255,255,255,0.25);
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,0.3);
 border-radius:14px;
 padding:26px;
-box-shadow:0 10px 24px rgba(0,0,0,0.08);
+box-shadow:0 8px 30px rgba(0,0,0,0.15);
 line-height:1.7;
-}
-
-/* STATS */
-
-.stats{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
 text-align:center;
 }
 
-.stats div{
-background:white;
+.card p{
+text-align:justify;
+text-indent:25px;
+}
+
+.desa-wrap{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+align-items:start;
+}
+
+.desa-map iframe{
+width:100%;
+height:680px;
+border:0;
+border-radius:10px;
+}
+
+@media(max-width:768px){
+.desa-wrap{
+grid-template-columns:1fr;
+}
+}
+
+.ppko-btn{
+display:inline-block;
+margin-top:18px;
+background:#111;
+color:white;
+padding:10px 18px;
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
+}
+
+/* DOSEN */
+
+.dosen{
+display:flex;
+justify-content:center;
+margin-bottom:45px;
+}
+
+.dosen-card{
+background:rgba(255,255,255,0.25);
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,0.3);
 padding:25px;
+border-radius:14px;
+text-align:center;
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
+max-width:260px;
+}
+
+.dosen-card img{
+width:110px;
+height:110px;
+border-radius:50%;
+margin-bottom:12px;
+object-fit:cover;
+}
+
+.dosen-card h3{
+font-size:18px;
+margin-bottom:5px;
+}
+
+.dosen-card p{
+font-size:14px;
+color:#666;
+}
+
+/* TEAM */
+
+.team-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:25px;
+}
+
+.team-card{
+background:rgba(255,255,255,0.25);
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,0.3);
+padding:20px;
 border-radius:12px;
+text-align:center;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.team-card img{
+width:90px;
+height:90px;
+border-radius:50%;
+margin-bottom:10px;
+}
+
+.team-card h3{
+font-size:16px;
+margin-bottom:4px;
+}
+
+.team-card p{
+font-size:14px;
+color:#666;
+}
+
+.team-card a{
+display:inline-block;
+margin-top:10px;
+background:#111;
+color:white;
+padding:8px 14px;
+border-radius:6px;
+text-decoration:none;
+font-size:13px;
 }
 
 /* PROCESS */
@@ -211,70 +363,22 @@ text-align:center;
 }
 
 .process div{
-background:white;
+background:rgba(255,255,255,0.25);
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,0.3);
 padding:20px;
 border-radius:12px;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* GALERI DRIVE */
+/* GALERI */
 
 .gallery-drive iframe{
 width:100%;
 height:500px;
 border:none;
 border-radius:12px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* TEAM */
-
-.team-list{
-max-width:800px;
-margin:auto;
-line-height:1.9;
-font-size:16px;
-}
-
-.team-list h3{
-margin-top:25px;
-margin-bottom:10px;
-}
-
-/* LOKASI */
-
-.location{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:40px;
-align-items:center;
-}
-
-.location-info{
-line-height:1.8;
-}
-
-.location-info a{
-display:inline-block;
-margin-top:15px;
-text-decoration:none;
-background:#111;
-color:white;
-padding:10px 18px;
-border-radius:8px;
-font-weight:600;
-transition:.3s;
-}
-
-.location-info a:hover{
-background:#444;
-}
-
-.map iframe{
-width:100%;
-height:350px;
-border-radius:18px;
-box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
 
 /* FOOTER */
@@ -283,39 +387,220 @@ footer{
 background:#2d2d2d;
 color:white;
 text-align:center;
-padding:20px;
-line-height:1.8;
+padding:12px 10%;
+line-height:1.5;
+font-size:13px;
+}
+.social-footer{
+margin-top:15px;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:12px;
 }
 
-/* MOBILE */
+.social-btn{
+background:#444;
+color:white;
+padding:6px 12px;
+border-radius:6px;
+text-decoration:none;
+font-size:12px;
+transition:0.2s;
+}	
 
-@media(max-width:768px){
+.social-btn:hover{
+background:#ffcc00;
+color:black;
+}
+
+/* ========================= */
+/* RESPONSIVE MOBILE FIX     */
+/* ========================= */
+
+@media (max-width:768px){
+
+@media (max-width:768px){
+
+header{
+padding:12px 5%;
+flex-direction:row;
+justify-content:space-between;
+align-items:center;
+}
+
+/* posisi hamburger di kanan */
+
+.menu-toggle{
+display:flex;
+margin-left:auto;
+}
 
 nav{
 position:absolute;
 top:70px;
-right:-260px;
-flex-direction:column;
+left:0;
+width:100%;
 background:white;
-padding:20px;
-border-radius:10px;
-transition:.3s;
+flex-direction:column;
+align-items:center;
+gap:20px;
+padding:25px 0;
+display:none;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
 }
 
 nav.active{
-right:20px;
+display:flex;
 }
 
-.menu-btn{
-display:flex;
+}
+
+nav{
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+font-size:14px;
+}
+
+.hero{
+height:auto;
+padding-top:120px;
+padding-bottom:80px;
 }
 
 .hero h1{
 font-size:36px;
 }
 
-.location{
+.hero p{
+font-size:15px;
+}
+
+.hero-logo{
+width:90px;
+height:90px;
+}
+
+.jargon{
+font-size:16px;
+}
+
+section{
+padding:70px 6%;
+}
+
+.title{
+font-size:26px;
+margin-bottom:30px;
+}
+
+.card{
+padding:20px;
+}
+
+.team-grid{
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:15px;
+}
+
+.team-card img{
+width:70px;
+height:70px;
+}
+
+.team-card h3{
+font-size:14px;
+}
+
+.team-card p{
+font-size:12px;
+}
+
+.dosen-card{
+max-width:100%;
+}
+
+.process{
 grid-template-columns:1fr;
+}
+
+.gallery-drive iframe{
+height:350px;
+}
+
+footer{
+font-size:12px;
+padding:18px 6%;
+}
+
+.social-footer{
+gap:8px;
+}
+
+.social-btn{
+font-size:11px;
+padding:5px 10px;
+}
+
+}
+
+/* ========================= */
+/* HAMBURGER MENU MOBILE */
+/* ========================= */
+
+.menu-toggle{
+display:none;
+flex-direction:column;
+gap:5px;
+cursor:pointer;
+}
+
+.menu-toggle span{
+width:28px;
+height:3px;
+background:#111;
+transition:.3s;
+}
+
+/* animasi jadi X */
+
+.menu-toggle.active span:nth-child(1){
+transform:rotate(45deg) translate(6px,6px);
+}
+
+.menu-toggle.active span:nth-child(2){
+opacity:0;
+}
+
+.menu-toggle.active span:nth-child(3){
+transform:rotate(-45deg) translate(6px,-6px);
+}
+
+/* MENU MOBILE */
+
+@media(max-width:768px){
+
+nav{
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+background:white;
+flex-direction:column;
+align-items:center;
+gap:20px;
+padding:25px 0;
+display:none;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
+}
+
+nav.active{
+display:flex;
+}
+
+.menu-toggle{
+display:flex;
 }
 
 }
@@ -323,174 +608,232 @@ grid-template-columns:1fr;
 </style>
 </head>
 
+<script>
+
+document.addEventListener("DOMContentLoaded",function(){
+
+/* MENU MOBILE */
+
+const toggle = document.getElementById("menu-toggle");
+const nav = document.getElementById("nav-menu");
+
+toggle.addEventListener("click",function(){
+
+toggle.classList.toggle("active");
+
+nav.classList.toggle("active");
+
+});
+
+/* TAMBAH CLASS REVEAL KE SEMUA ELEMENT */
+
+const revealElements = document.querySelectorAll(
+"section, .card, .team-card, .process div, .dosen-card"
+);
+
+revealElements.forEach(function(el){
+el.classList.add("reveal");
+});
+
+/* FUNGSI SCROLL ANIMATION */
+
+function revealOnScroll(){
+
+let windowHeight = window.innerHeight;
+
+revealElements.forEach(function(el){
+
+let elementTop = el.getBoundingClientRect().top;
+
+if(elementTop < windowHeight - 100){
+el.classList.add("active");
+}
+
+});
+
+}
+
+/* EVENT SCROLL */
+
+window.addEventListener("scroll",revealOnScroll);
+
+/* JALANKAN SEKALI SAAT LOAD */
+
+revealOnScroll();
+
+});
+
+</script>
+
 <body>
 
-<header id="navbar">
+<header>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <div class="logo-wrap">
 <img src="logo.png" class="logo-img">
 <div class="logo">SIBRIKET</div>
 </div>
 
-<div class="menu-btn" onclick="toggleMenu(this)">
+<nav id="nav-menu">
+<a href="#tentang">Tentang</a>
+<a href="#timppko">Tim</a>
+<a href="#proses">Latar Belakang</a>
+<a href="#galeri">Galeri</a>
+</nav>
+
+<div class="menu-toggle" id="menu-toggle">
 <span></span>
 <span></span>
 <span></span>
 </div>
 
-<nav id="menu">
-<a href="#tentang">Tentang</a>
-<a href="#dampak">Dampak</a>
-<a href="#proses">Proses</a>
-<a href="#galeri">Galeri</a>
-<a href="#tim">Tim</a>
-</nav>
-
 </header>
 
 <section class="hero">
 
-<div class="reveal">
+<div>
 
 <img src="logo.png" class="hero-logo">
 
 <h1>SIBRIKET</h1>
 
 <p>
-Pemanfaatan limbah sekam padi menjadi briket arang sebagai energi alternatif ramah lingkungan
-yang mendukung pemberdayaan masyarakat dan ekonomi berkelanjutan.
+Program Pemberdayaan Masyarakat Melalui Pemanfaatan Limbah Sekam Padi Menjadi Briket Arang untuk Mendorong Pertumbuhan Ekonomi Berkelanjutan di Desa Candimulyo
 </p>
+
+<div class="jargon">
+"Aksi Muda Menuju Desa Wirausaha"
+</div>
 
 </div>
 
 </section>
 
-<section id="tentang" class="reveal">
+<section id="tentang">
 
-<h2 class="title">Tentang Program</h2>
+<h2 class="title">PPK Ormawa Dikti</h2>
 
 <div class="card">
 
-Program SIBRIKET merupakan program pemberdayaan masyarakat yang memanfaatkan limbah sekam padi 
-menjadi briket arang sebagai sumber energi alternatif yang lebih ramah lingkungan. 
-
-Melalui program ini, limbah pertanian yang sebelumnya tidak dimanfaatkan secara optimal dapat 
-diolah menjadi produk bernilai ekonomi yang dapat meningkatkan kesejahteraan masyarakat desa.
-
-</div>
-
-</section>
-
-<section id="dampak" class="reveal">
-
-<h2 class="title">Dampak Program</h2>
-
-<div class="stats">
-
-<div>
-<h2>100+</h2>
-<p>Kg Sekam Dimanfaatkan</p>
-</div>
-
-<div>
-<h2>20+</h2>
-<p>Masyarakat Terlibat</p>
-</div>
-
-<div>
-<h2>1</h2>
-<p>Peluang kerja baru</p>
-</div>
-
-</div>
-
-</section>
-
-<section id="proses" class="reveal">
-
-<h2 class="title">Proses Pembuatan Briket</h2>
-
-<div class="process">
-
-<div>Pengumpulan Sekam Padi</div>
-<div>Proses Karbonisasi</div>
-<div>Pencampuran Perekat</div>
-<div>Pencetakan Briket</div>
-<div>Pengeringan</div>
-
-</div>
-
-</section>
-
-<section id="galeri" class="reveal">
-
-<h2 class="title">Galeri Kegiatan</h2>
-
-<div class="gallery-drive">
-
-<iframe src="https://drive.google.com/embeddedfolderview?id=1xE1tpgJLrQ7qcTLoAI0e-tG1ZKK3T51H#grid"></iframe>
-
-</div>
-
-</section>
-
-<section id="tim" class="reveal">
-
-<h2 class="title">Tim Pelaksana</h2>
-
-<div class="team-list">
-
-Hafidz Rizqi Ramadhan (244308043) – 2024<br>
-Rahma Dina Aulia (244308113) – 2024<br>
-Zulfan Naufal Azzaidan (244303090) – 2024<br>
-Hilmi Muhtadi (244303048) – 2024<br>
-Erwina Siska Alexa (244101044) – 2024<br>
-Axcel Viviana Putri (244202003) – 2024<br>
-Ichdam Anggana Putra (244308102) – 2024<br>
-M. Rifqi Khoirul Labib (244303055) – 2024<br>
-Maihendra Syahilmi (243305049) – 2024<br>
-Salma Fidela Istiazah (254112023) – 2025<br>
-Fathur Rohman Nazili (253209093) – 2025<br>
-Linggar Studining Tyas (253209066) – 2025<br>
-Aura Ayu Wardhani (254311036) – 2025<br>
-Raditya Rama Wijaya (254303049) – 2025<br>
-Ahmad Zianur Rahman (253304078) - 2025
-
-<h3>Dosen Pendamping</h3>
-
-Sulfan Bagus Setyawan, S.ST., M.T.<br>
-(NUPTK. 7956769670130282)
-
-</div>
-
-</section>
-
-<section class="reveal">
-
-<h2 class="title">Lokasi Program</h2>
-
-<div class="location">
-
-<div class="location-info">
-
-<h3>Desa Candimulyo</h3>
-
 <p>
-Program SIBRIKET dilaksanakan di Desa Candimulyo, Kecamatan Dolopo,
-Kabupaten Madiun, Jawa Timur.
+Program Penguatan Kapasitas Organisasi Kemahasiswaan (PPK Ormawa) adalah inisiatif Kementerian Pendidikan Tinggi, Sains, dan Teknologi untuk meningkatkan kapasitas Ormawa melalui pengabdian dan pembardayaan masyarakat. Program ini bertujuan menguatkan hard/soft skill mahasiswa serta meningkatkan kinerja perguruan tinggi dalam membina Ormawa agar berkontribusi nyata bagi desa.
 </p>
 
-<a href="https://www.instagram.com/ppkormawa_bemkmpnm" target="_blank">
-Instagram Program
+<a href="https://www.instagram.com/ppkormawadikti" target="_blank" class="ppko-btn">
+Instagram PPKO Dikti
 </a>
 
 </div>
 
-<div class="map">
+</section>
+
+<section id="timppko">
+
+<h2 class="title">Tim PPK Ormawa BEM-KM PNM</h2>
+
+<div class="dosen">
+<div class="dosen-card">
+<img src="logo.png">
+<h3>Sulfan Bagus Setyawan, S.ST., M.T.</h3>
+<p>NUPTK. 7956769670130282</p>
+<p>Dosen Pendamping</p>
+</div>
+</div>
+
+<div class="team-grid">
+
+<div class="team-card"><img src="hafid.jpg"><h3>Hafidz Rizqi Ramadhan</h3><p>244308043</p><p>Ketua Tim</p><a href="https://www.instagram.com/hapidzrzq/" target="_blank">Instagram</a></div>
+<div class="team-card"><img src="aul.jpg"><h3>Rahma Dina Aulia</h3><p>244308113</p><p>Tim Proposal dan Administrasi</p><a href="https://www.instagram.com/rahhmadinaa/" target="_blank">Instagram</a></div>
+<div class="team-card"><img src="alexa.jpg"><h3>Erwina Siska Alexa</h3><p>244101044</p><p>Tim Proposal dan Administrasi</p><a href="https://www.instagram.com/axcel.vnptr" target="_blank">Instagram</a></div>
+<div class="team-card"><img src="studi.jpg"><h3>Linggar Studining Tyas</h3><p>253209066</p><p>Tim Proposal dan Administrasi</p><a href="https://www.instagram.com/tyasgare_/" target="_blank">Instagram</a></div>
+<div class="team-card"><img src="cece.jpg"><h3>Axcel Viviana Putri</h3><p>244202003</p><p>Tim Keuangan dan Pemasaran</p><a href="https://www.instagram.com/alexa.erwina/" target="_blank">Instagram</a></div>
+<div class="team-card"><img src="salma.jpg"><h3>Salma Fidela Istiazah</h3><p>254112023</p><p>Tim Keuangan dan Pemasaran</p><a href="https://www.instagram.com/slmfdla__/" target="_blank">Instagram</a></div>
+<div class="team-card"><img src="fatur.jpg"><h3>Fathur Rohman Nazili</h3><p>253209093</p><p>Tim Keuangan dan Pemasaran</p><a href="https://www.instagram.com/nnn4zl/" target="_blank">Instagram</a></div>
+<div class="team-card"><img src="zulfan.jpg"><h3>Zulfan Naufal Azzaidan</h3><p>244303090</p><p>Tim Perancangan dan Desain Alat</p><a href="https://www.instagram.com/njulpanz_/" target="_blank">Instagram</a></div>
+<div class="team-card"><img src="hilmi.jpg"><h3>Hilmi Muhtadi</h3><p>244303048</p><p>Tim Perancangan dan Desain Alat</p><a href="https://www.instagram.com/hlmi.m21/" target="_blank">Instagram</a></div>
+<div class="team-card"><img src="Rama.jpg"><h3>Raditya Rama Wijaya</h3><p>254303049</p><p>Tim Perancangan dan Desain Alat</p><a href="https:https://www.instagram.com/radttrue" target="_blank">Instagram</a></div>
+<div class="team-card"><img src="labib.jpg"><h3>M. Rifqi Khoirul Labib</h3><p>244303055</p><p>Tim Perancangan dan Desain Alat</p><a href="https://www.instagram.com/muhrfqiii" target="_blank">Instagram</a></div>
+<div class="team-card"><img src="Syahil.jpg"><h3>Maihendra Syahilmi</h3><p>243305049</p><p>Tim Perancangan dan Desain Alat</p><a href="https://www.instagram.com/syahiil/" target="_blank">Instagram</a></div>
+<div class="team-card"><img src="ichdam.jpg"><h3>Ichdam Anggana Putra</h3><p>244308102</p><p>Tim Publikasi, Desain, dan Dokumentasi</p><a href="https://www.instagram.com/chdmxz_/" target="_blank">Instagram</a></div>
+<div class="team-card"><img src="fahrozi.jpg"><h3>Fachrozzi Rizky Wibowo</h3><p>244311041</p><p>Tim Publikasi, Desain, dan Dokumentasi</p><a href="https://www.instagram.com/poenzy/" target="_blank">Instagram</a></div>
+<div class="team-card"><img src="zian.jpg"><h3>Ahmad Zianur Rahman</h3><p>253304078</p><p>Tim Publikasi, Desain, dan Dokumentasi</p><a href="https://www.instagram.com/_ahmdzian/	" target="_blank">Instagram</a></div>
+
+</div>
+
+</section>
+
+<section id="proses">
+
+<h2 class="title">Desa Candimulyo</h2>
+
+<div class="card">
+
+<div class="desa-wrap">
+
+<div class="desa-map">
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15812.883740550604!2d111.54065514572395!3d-7.766379876044917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e79a37273d3fd41%3A0xa2e38a48fb426702!2sCandimulyo%2C%20Kec.%20Dolopo%2C%20Kabupaten%20Madiun%2C%20Jawa%20Timur!5e0!3m2!1sid!2sid"></iframe>
 
 </div>
+
+<div style="text-align:justify;">
+
+<h3 style="margin-bottom:10px;">Potensi</h3>
+
+<p style="margin-bottom:20px;">
+Desa Candimulyo memiliki potensi yang dapat dikembangkan untuk meningkatkan perekonomian masyarakat. Desa ini memiliki lahan pertanian sekitar 210 hektar dengan hasil panen mencapai 1.470 ton setiap masa panen serta didukung oleh sekitar 1.700 petani yang tergabung dalam 6 kelompok tani dan 1 gabungan kelompok tani. Kondisi ini menunjukkan bahwa ketersediaan bahan baku berupa sekam padi sangat melimpah dan berpotensi untuk diolah menjadi produk bernilai ekonomi seperti briket arang. Selain itu, masyarakat dan pemerintah desa terbuka dan mendukung inovasi pemanfaatan limbah pertanian. Potensi tersebut menjadi peluang untuk mengembangkan usaha berbasis sekam padi yang mendorong terwujudnya desa wirausaha yang berkelanjutan.
+</p>
+
+<h3 style="margin-bottom:10px;">Permasalahan</h3>
+
+<p>
+Desa Candimulyo menghadapi permasalahan dalam pemanfaatan potensi limbah pertanian. Limbah sekam padi dari penggilingan belum dimanfaatkan secara optimal dan sebagian dibakar mentah atau dibuang, sehingga menimbulkan dampak negatif seperti polusi udara, asap yang mengganggu, serta emisi gas rumah kaca. Selain itu, belum ada kelompok masyarakat yang mengelola dan mengoptimalkan sekam padi menjadi produk bernilai ekonomi. Keterbatasan sarana berupa alat juga menjadi kendala dalam pengembangan potensi tersebut. Di sisi lain, pengetahuan dan keterampilan masyarakat masih terbatas, sehingga produk sekam padi belum memiliki strategi branding, promosi, dan jaringan pemasaran yang meningkatkan nilai ekonomi bagi masyarakat.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="title">SIBRIKET</h2>
+
+<div class="card" style="text-align:justify;">
+
+<p>
+Sibriket merupakan inovasi pengolahan limbah pertanian berupa sekam padi menjadi bahan bakar alternatif yang lebih ramah lingkungan dan bernilai ekonomis. Nama sibriket diangkat dalam kegiatan pemberdayaan masyarakat pada Program Penguatan Kapasitas Organisasi Kemahasiswaan (PPK ORMAWA) yang berfokus pada pemanfaatan limbah sekam padi menjadi arang briket. 
+</p>
+
+<br>
+
+<p>
+Melalui program SiBriket, sekam padi yang sebelumnya kurang dimanfaatkan diolah menjadi arang briket yang dapat digunakan sebagai bahan bakar untuk kebutuhan rumah tangga maupun usaha kecil. Program ini bertujuan untuk meningkatkan nilai tambah limbah pertanian, membuka peluang usaha bagi masyarakat, serta mendukung pemanfaatan energi alternatif yang lebih berkelanjutan.
+</p>
+
+</div>
+
+</section>
+
+<section id="galeri">
+
+<h2 class="title">Galeri Kegiatan</h2>
+
+<div class="card">
+
+<p style="margin-bottom:20px;">
+Dokumentasi kegiatan program SIBRIKET dapat dilihat melalui galeri Google Drive berikut.
+</p>
+
+<a href="https://drive.google.com/drive/folders/1xE1tpgJLrQ7qcTLoAI0e-tG1ZKK3T51H" 
+target="_blank" 
+class="ppko-btn">
+Buka Galeri Kegiatan
+</a>
 
 </div>
 
@@ -498,39 +841,32 @@ Instagram Program
 
 <footer>
 
-© 2026 Program SIBRIKET<br>
-Kegiatan ini dilaksanakan oleh Tim PPKO BEM-KM Politeknik Negeri Madiun.
+Kunjungi Kami :
+
+<div class="social-footer">
+
+<a href="https://www.instagram.com/ppkormawa_bemkmpnm/" target="_blank" class="social-btn">
+<i class="fa-brands fa-instagram"></i> Instagram PPKO
+</a>
+
+<a href="https://www.instagram.com/bem_kmpnm/" target="_blank" class="social-btn">
+<i class="fa-brands fa-instagram"></i> Instagram BEM
+</a>
+
+<a href="LINK_TIKTOK_BEM" target="_blank" class="social-btn">
+<i class="fa-brands fa-tiktok"></i> TikTok BEM
+</a>
+
+<a href="https://www.youtube.com/@bempnmtv32" target="_blank" class="social-btn">
+<i class="fa-brands fa-youtube"></i> YouTube BEM
+</a>
+
+</div>
+
+<p>.</p>
+<p>© Dibuat Oleh Tim PPK Ormawa BEM-KM PNM 2026</p>
 
 </footer>
-
-<script>
-
-function toggleMenu(btn){
-btn.classList.toggle("active");
-document.getElementById("menu").classList.toggle("active");
-}
-
-window.addEventListener("scroll",function(){
-let nav=document.getElementById("navbar");
-nav.classList.toggle("scrolled",window.scrollY>50);
-});
-
-function reveal(){
-let reveals=document.querySelectorAll(".reveal");
-for(let i=0;i<reveals.length;i++){
-let windowHeight=window.innerHeight;
-let elementTop=reveals[i].getBoundingClientRect().top;
-let elementVisible=120;
-
-if(elementTop < windowHeight - elementVisible){
-reveals[i].classList.add("active");
-}
-}
-}
-
-window.addEventListener("scroll",reveal);
-
-</script>
 
 </body>
 </html>
